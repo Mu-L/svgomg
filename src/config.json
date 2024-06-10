@@ -193,7 +193,7 @@
     {
       "id": "removeTitle",
       "name": "Remove <title>",
-      "enabledByDefault": true
+      "enabledByDefault": false
     },
     {
       "id": "removeDesc",
@@ -211,7 +211,7 @@
       "enabledByDefault": false
     },
     {
-      "id": "removeScriptElement",
+      "id": "removeScripts",
       "name": "Remove script elements",
       "enabledByDefault": false
     },
