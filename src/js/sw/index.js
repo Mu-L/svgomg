@@ -34,7 +34,7 @@ addEventListener('install', (event) => {
         !activeVersion ||
         activeVersion.split('.')[0] === version.split('.')[0]
       ) {
-        self.skipWaiting();
+        globalThis.skipWaiting();
       }
     })(),
   );

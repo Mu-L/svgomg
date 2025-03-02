@@ -27,15 +27,15 @@ export default class CopyButton extends FloatingActionButton {
 
     this._pre.textContent = this._text;
     document.body.append(this._pre);
-    window.getSelection().removeAllRanges();
+    globalThis.getSelection().removeAllRanges();
 
     const range = document.createRange();
     range.selectNode(this._pre);
 
-    window.getSelection().addRange(range);
+    globalThis.getSelection().addRange(range);
 
     document.execCommand('copy');
-    window.getSelection().removeAllRanges();
+    globalThis.getSelection().removeAllRanges();
     this._pre.remove();
 
     return true;

@@ -1,6 +1,6 @@
-const fs = require('fs/promises');
-const path = require('path');
-const process = require('process');
+const fs = require('node:fs/promises');
+const path = require('node:path');
+const process = require('node:process');
 const sirv = require('sirv-cli');
 const { VERSION: SVGO_VERSION } = require('svgo');
 const sass = require('sass');
@@ -15,7 +15,7 @@ const rollup = require('rollup');
 const { nodeResolve: rollupResolve } = require('@rollup/plugin-node-resolve');
 const rollupCommon = require('@rollup/plugin-commonjs');
 const rollupReplace = require('@rollup/plugin-replace');
-const { terser: rollupTerser } = require('rollup-plugin-terser');
+const rollupTerser = require('@rollup/plugin-terser');
 const pkg = require('./package.json');
 
 const IS_DEV_TASK =
@@ -82,12 +82,15 @@ const minifyCss = vinylMap((buffer) => {
 
 function copy() {
   return gulp
-    .src([
-      'src/{.well-known,imgs,fonts}/**',
-      // Copy the demo SVG to the root
-      'test-svgs/car-lite.svg',
-      'src/*.json',
-    ])
+    .src(
+      [
+        'src/{.well-known,imgs,fonts}/**',
+        // Copy the demo SVG to the root
+        'test-svgs/car-lite.svg',
+        'src/*.json',
+      ],
+      { encoding: false },
+    )
     .pipe(gulp.dest('build'));
 }
 

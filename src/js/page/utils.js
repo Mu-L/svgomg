@@ -24,7 +24,7 @@ const entityMap = {
 };
 
 export function escapeHTML(str) {
-  return String(str).replace(/[&<>"'/]/g, (s) => entityMap[s]);
+  return String(str).replaceAll(/[&<>"'/]/g, (s) => entityMap[s]);
 }
 
 export function escapeHtmlTag(strings, ...values) {
